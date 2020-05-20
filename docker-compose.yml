@@ -1,0 +1,22 @@
+version: "3"
+services:
+
+    http-php:
+        build:
+            context: ./
+        container_name: berichtsheft-php
+        volumes: 
+            - /var/www/html/ersteseite/berichtsheft_new/:/var/www/html/
+        ports:
+            - "127.0.0.1:9642:9642"
+    mysql:
+         image: mysql:5.7
+         volumes:
+             - /var/lib/mysql:/var/lib/mysql
+         container_name: berichtsheft-mysql
+         ports:
+             - "127.0.0.1:9857:3306"
+         environment:
+             MYSQL_ROOT_PASSWORD: root
+             MYSQL_USER: root
+
